@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bookworm AS builder
+FROM python:3.14.2-slim-bookworm AS builder
 
 # Install uv
 RUN pip install --no-cache-dir uv
@@ -11,7 +11,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv pip install --system -e .
 
 # Final image - ultra slim
-FROM python:3.12-slim-bookworm
+FROM python:3.14.2-slim-bookworm
 
 # Install runtime dependencies, Node.js, PNPM, PostgreSQL client libraries, and FFmpeg
 RUN apt-get update && \
